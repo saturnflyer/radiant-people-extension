@@ -1,0 +1,4 @@
+.form-area { overflow: hidden;}
+.personExtras { clear: both;}
+.recordPart { float: left;}
+.recordPart label, .recordPart input { display: block; }

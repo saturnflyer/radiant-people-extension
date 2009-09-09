@@ -1,0 +1,15 @@
+- render_region :top
+%h1 People
+%table.index
+  %thead
+    %tr
+      - render_region :people_head do |people_head|
+        - people_head.name_column_head do
+          %th Name
+        - people_head.gender_column_head do
+          %th Gender
+  %tbody
+    - unless @people.blank?
+      - @people.each do |person|
+        = render_person(person)
+%p= link_to "Add Person", new_admin_person_path

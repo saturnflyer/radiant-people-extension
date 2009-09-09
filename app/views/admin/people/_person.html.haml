@@ -1,0 +1,6 @@
+%tr
+  - render_region :person do |p|
+    - p.name_column do
+      %td= link_to(person.full_name(:last_name_first => true), edit_admin_person_path(person))
+    - p.gender_column do
+      %td= person.gender
