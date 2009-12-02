@@ -1,6 +1,9 @@
 %tr
   - render_region :person do |p|
     - p.name_column do
-      %td= link_to(person.full_name(:last_name_first => true), edit_admin_person_path(person))
+      %td
+        - if params[:person]
+          = check_box_tag "merge[person][#{person.id}]", 1, true
+        = link_to(person.full_name(:last_name_first => true), edit_admin_person_path(person))
     - p.gender_column do
       %td= person.gender

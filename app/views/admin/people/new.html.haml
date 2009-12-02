@@ -4,21 +4,7 @@
   .form-area
     - @person_form = f
     - render_region :person_info do |person_info|
-      .recordPart
-        = f.label :first_name
-        = f.text_field :first_name
-        = f.error_message_on :first_name
-      .recordPart
-        = f.label :middle_name
-        = f.text_field :middle_name
-        = f.error_message_on :middle_name
-      .recordPart
-        = f.label :last_name
-        = f.text_field :last_name
-        = f.error_message_on :last_name
-      .recordPart
-        = f.label :gender
-        = f.select :gender, [['male','male'],['female','female']], :include_blank => true
+      = render 'form', :f => f
   %p.buttons
     - render_region :buttons do |buttons|
       = save_model_button(@person)

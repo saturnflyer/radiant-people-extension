@@ -6,11 +6,13 @@ class PeopleExtension < Radiant::Extension
   
   extension_config do |config|
     config.gem 'will_paginate'
+    config.gem 'searchlogic'
   end
   
   define_routes do |map|
-    map.namespace :admin, :member => { :remove => :get } do |admin|
-      admin.resources :people
+    map.merge_admin_people '/admin/people/merge.:format', :controller => 'admin/people', :action => 'merge', :conditions => {:method => :post}
+    map.namespace :admin do |admin|
+      admin.resources :people, :member => { :remove => :get }
     end
   end
   
@@ -28,7 +30,7 @@ class PeopleExtension < Radiant::Extension
   def load_default_people_regions
     returning OpenStruct.new do |people|
       people.index = Radiant::AdminUI::RegionSet.new do |index|
-        index.top.concat %w{}
+        index.top.concat %w{search}
         index.people_head.concat %w{name_column_head gender_column_head}
         index.person.concat %w{name_column gender_column}
       end
