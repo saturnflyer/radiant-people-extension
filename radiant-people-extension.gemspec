@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
     "README"
   ]
   s.files = [
-    "README",
+    ".gitignore",
+     "README",
      "Rakefile",
      "VERSION",
      "app/controllers/admin/people_controller.rb",
