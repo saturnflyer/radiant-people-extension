@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jim Gay"]
-  s.date = %q{2010-01-18}
+  s.date = %q{2010-01-19}
   s.description = %q{A generic and extendable way to manage people in Radiant CMS}
   s.email = %q{jim@saturnflyer.com}
   s.extra_rdoc_files = [
