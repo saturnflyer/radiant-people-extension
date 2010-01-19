@@ -1,17 +1,32 @@
-- render_region :top do |top|
-  - top.search do
-    .search
-      %h2.label_head Filter
-      - form_tag admin_people_path, :method => :get do
-        = label :person, :last_name
-        = text_field :person, :last_name
-        = label :person, :first_name
-        = text_field :person, :first_name
-        = submit_tag 'Search'
-        = link_to 'Clear results...', admin_people_path
-%h1 People
-- if params[:person]
-  - form_for :merge, :url => merge_admin_people_path() do |f|
+.outset
+  - render_region :top do |top|
+    - top.search do
+      .search
+        %h2.label_head Filter
+        - form_tag admin_people_path, :method => :get do
+          = label :person, :last_name
+          = text_field :person, :last_name
+          = label :person, :first_name
+          = text_field :person, :first_name
+          = submit_tag 'Search'
+          = link_to 'Clear results...', admin_people_path
+  - if params[:person]
+    - form_for :merge, :url => merge_admin_people_path() do |f|
+      %table.index
+        %thead
+          %tr
+            - render_region :people_head do |people_head|
+              - people_head.name_column_head do
+                %th Name
+              - people_head.gender_column_head do
+                %th Gender
+        %tbody
+          - unless @people.blank?
+            - @people.each do |person|
+              = render_person(person)
+      %p= submit_tag 'Merge'
+    
+  - else
     %table.index
       %thead
         %tr
@@ -24,20 +39,7 @@
         - unless @people.blank?
           - @people.each do |person|
             = render_person(person)
-    %p= submit_tag 'Merge'
-    
-- else
-  %table.index
-    %thead
-      %tr
-        - render_region :people_head do |people_head|
-          - people_head.name_column_head do
-            %th Name
-          - people_head.gender_column_head do
-            %th Gender
-    %tbody
-      - unless @people.blank?
-        - @people.each do |person|
-          = render_person(person)
-  %p= link_to "Add Person", new_admin_person_path
-%p= will_paginate @people
+  %p= will_paginate @people
+  #actions
+    %ul
+      %li= link_to "Add Person", new_admin_person_path

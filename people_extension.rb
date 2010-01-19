@@ -7,6 +7,7 @@ class PeopleExtension < Radiant::Extension
   extension_config do |config|
     config.gem 'will_paginate'
     config.gem 'searchlogic'
+    config.gem 'merger'
   end
   
   define_routes do |map|
@@ -21,7 +22,9 @@ class PeopleExtension < Radiant::Extension
       attr_accessor :people
     end
     admin.people = load_default_people_regions
-    admin.tabs.add "People", "/admin/people", :after => "Layouts", :visibility => [:all]
+    tab "People" do
+      add_item 'All People', "/admin/people"
+    end
   end
   
   def deactivate

@@ -1,3 +1,21 @@
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "radiant-people-extension"
+    gem.summary = %Q{Manage People in Radiant CMS}
+    gem.description = %Q{A generic and extendable way to manage people in Radiant CMS}
+    gem.email = "jim@saturnflyer.com"
+    gem.homepage = "http://github.com/saturnflyer/radiant-people-extension"
+    gem.authors = ["Jim Gay"]
+    gem.add_dependency 'will_paginate'
+    gem.add_dependency 'searchlogic'
+    gem.add_dependency 'merger'
+    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+  end
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. This is only required if you plan to package gemmy as a gem."
+end
+
 # I think this is the one that should be moved to the extension Rakefile template
 
 # In rails 1.2, plugins aren't available in the path until they're loaded.
