@@ -1,6 +1,6 @@
 require 'ostruct'
 class PeopleExtension < Radiant::Extension
-  version "1.0"
+  version "#{File.read(File.expand_path(File.dirname(__FILE__)) + '/VERSION')}"
   description "Manage people."
   url "http://saturnflyer.com/"
   
