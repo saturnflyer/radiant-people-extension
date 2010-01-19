@@ -38,7 +38,8 @@
       %tbody
         - unless @people.blank?
           - @people.each do |person|
-            = render_person(person)
+            - @current_person = person # for additions
+            = render 'person', :person => person
   %p= will_paginate @people
   #actions
     %ul
