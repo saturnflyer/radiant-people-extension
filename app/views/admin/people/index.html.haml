@@ -9,7 +9,8 @@
           = label :person, :first_name
           = text_field :person, :first_name
           = submit_tag 'Search'
-          = link_to 'Clear results...', admin_people_path
+          - if params[:person]
+            = link_to 'Clear results...', admin_people_path
   - if params[:person]
     - form_for :merge, :url => merge_admin_people_path() do |f|
       %table.index
