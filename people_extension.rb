@@ -10,20 +10,13 @@ class PeopleExtension < Radiant::Extension
     config.gem 'merger'
   end
   
-  define_routes do |map|
-    map.merge_admin_people '/admin/people/merge.:format', :controller => 'admin/people', :action => 'merge', :conditions => {:method => :post}
-    map.namespace :admin do |admin|
-      admin.resources :people, :member => { :remove => :get }
-    end
-  end
-  
   def activate
     Radiant::AdminUI.class_eval do
       attr_accessor :people
     end
     admin.people = load_default_people_regions
-    tab "People" do
-      add_item 'All People', "/admin/people"
+    tab "Contacts" do
+      add_item 'People', "/admin/people"
     end
   end
   

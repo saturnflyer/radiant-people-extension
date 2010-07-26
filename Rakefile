@@ -13,10 +13,8 @@ begin
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
-  puts "Jeweler (or a dependency) not available. This is only required if you plan to package gemmy as a gem."
+  puts "Jeweler (or a dependency) not available. This is only required if you plan to package people as a gem."
 end
-
-# I think this is the one that should be moved to the extension Rakefile template
 
 # In rails 1.2, plugins aren't available in the path until they're loaded.
 # Check to see if the rspec plugin is installed first and require
