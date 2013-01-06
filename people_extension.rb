@@ -18,7 +18,7 @@ class PeopleExtension < Radiant::Extension
   end
   
   def load_default_people_regions
-    returning OpenStruct.new do |people|
+    OpenStruct.new.tap do |people|
       people.index = Radiant::AdminUI::RegionSet.new do |index|
         index.top.concat %w{search}
         index.people_head.concat %w{name_column_head gender_column_head}
