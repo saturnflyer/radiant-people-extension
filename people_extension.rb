@@ -1,15 +1,9 @@
 require 'ostruct'
 class PeopleExtension < Radiant::Extension
-  version "#{File.read(File.expand_path(File.dirname(__FILE__)) + '/VERSION')}"
-  description "Manage people."
-  url "http://saturnflyer.com/"
-  
-  extension_config do |config|
-    config.gem 'will_paginate'
-    config.gem 'searchlogic'
-    config.gem 'merger'
-  end
-  
+  version     RadiantPeopleExtension::VERSION
+  description RadiantPeopleExtension::DESCRIPTION
+  url         RadiantPeopleExtension::URL
+
   def activate
     Radiant::AdminUI.class_eval do
       attr_accessor :people
