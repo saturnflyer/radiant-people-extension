@@ -1,15 +1,9 @@
 require 'ostruct'
 class PeopleExtension < Radiant::Extension
-  version "#{File.read(File.expand_path(File.dirname(__FILE__)) + '/VERSION')}"
-  description "Manage people."
-  url "http://saturnflyer.com/"
-  
-  extension_config do |config|
-    config.gem 'will_paginate'
-    config.gem 'searchlogic'
-    config.gem 'merger'
-  end
-  
+  version     RadiantPeopleExtension::VERSION
+  description RadiantPeopleExtension::DESCRIPTION
+  url         RadiantPeopleExtension::URL
+
   def activate
     Radiant::AdminUI.class_eval do
       attr_accessor :people
@@ -24,7 +18,7 @@ class PeopleExtension < Radiant::Extension
   end
   
   def load_default_people_regions
-    returning OpenStruct.new do |people|
+    OpenStruct.new.tap do |people|
       people.index = Radiant::AdminUI::RegionSet.new do |index|
         index.top.concat %w{search}
         index.people_head.concat %w{name_column_head gender_column_head}
